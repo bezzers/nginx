@@ -13,7 +13,7 @@ We run the image with the following command:
 docker run -d --name $SERVICE_NAME -e SERVICE_NAME=$SERVICE_NAME \
 --dns 172.17.42.1 --dns-search service.consul --dns-search node.consul \
 --restart always -p 80:80 -p 443:443 \
--e PUBLIC_ADDRESS=$SERVICE_PUBLIC_ADDRESS -e SERVICE_ADDRESS=$SERVICE_ADDRESS \
+-e PUBLIC_ADDRESS=$PUBLIC_ADDRESS -e SERVICE_ADDRESS=$SERVICE_ADDRESS \
 -e VAULT_SECRET_URL=$VAULT_SECRET_URL -e VAULT_TOKEN=$VAULT_TOKEN \
 docker.io/owlabs/nginx
 ```
@@ -23,7 +23,7 @@ Or in a Windows CMD prompt with:
 docker run -d --name %SERVICE_NAME% -e SERVICE_NAME=%SERVICE_NAME% ^
 --dns 172.17.42.1 --dns-search service.consul --dns-search node.consul ^
 --restart always -p 80:80 -p 443:443 ^
--e PUBLIC_ADDRESS=%SERVICE_PUBLIC_ADDRESS% -e SERVICE_ADDRESS=%SERVICE_ADDRESS% ^
+-e PUBLIC_ADDRESS=%PUBLIC_ADDRESS% -e SERVICE_ADDRESS=%SERVICE_ADDRESS% ^
 -e VAULT_SECRET_URL=%VAULT_SECRET_URL% -e VAULT_TOKEN=%VAULT_TOKEN% ^
 docker.io/owlabs/nginx
 ```
