@@ -1,7 +1,7 @@
 # nginx
 A repository that creates an nginx container that is customizable through environment variables and that fetches its keys and configuration file from a Vault server.
 
-We need to set five environment variables for this to work:
+We need to set five environment variables for this to work:  
 `PUBLIC_ADDRESS=app.domain.com` - this sets the address that nginx is expected to be listening on  
 `SERVICE_ADDRESS=app.service.consul:port` - this sets the address that the underlying service is at  
 `VAULT_SECRET_URL=vault.service.consul:8200/v1/secret/path` - the location of the secrets which expects a cert and key field in the returned data in an entry called nginx
