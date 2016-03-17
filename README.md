@@ -4,7 +4,7 @@ A repository that creates an nginx container that is customizable through enviro
 We need to set five environment variables for this to work:  
 `PUBLIC_ADDRESS=app.domain.com` - this sets the address that nginx is expected to be listening on  
 `SERVICE_ADDRESS=app.service.consul:port` - this sets the address that the underlying service is at  
-`VAULT_SECRET_URL=vault.service.consul:8200/v1/secret/path` - the location of the secrets which expects a cert and key field in the returned data in an entry called nginx
+`VAULT_SECRET_URL=vault.service.consul:8200/v1/secret/path` - the location of the secrets which expects a cert and key field in the returned data in an entry called nginx  
 `VAULT_TOKEN=xxxxxxxxx` - this is the access token to authorize against the Vault server  
 `SERVICE_NAME=appname-nginx` - the name to register to the consul server for this nginx instance
 
