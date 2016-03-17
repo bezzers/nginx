@@ -9,4 +9,4 @@ curl -k -L -H "X-Vault-Token: $VAULT_TOKEN" -X GET https://$VAULT_SECRET_URL/ngi
 envsubst < /etc/nginx/nginx-template.conf > /etc/nginx/nginx.conf
 
 # Start nginx
-nginx -g daemon off
+nginx -g daemon off;
