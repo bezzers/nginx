@@ -7,10 +7,10 @@ curl -k -L -H "X-Vault-Token: $VAULT_TOKEN" -X GET https://$VAULT_SECRET_URL/ngi
 
 # Populate the template for the configuration file with the relevant environment variables
 envsubst '$SERVICE_ADDRESS:$PUBLIC_ADDRESS' < /etc/nginx/nginx-template.conf > /etc/nginx/nginx.conf
-envsubst '$SERVICE_ADDRESS:$PUBLIC_ADDRESS' < $CT_FILE > $CT_FILE
+envsubst '$SERVICE_ADDRESS:$PUBLIC_ADDRESS' < $CT_FILE > $CT_FILE-live
 
 # Start nginx and consul template
 nginx \
 & consul-template \
   -consul=consul:8500 \
-  -template "$CT_FILE:$NX_FILE:nginx -s reload";
+  -template "$CT_FILE-live:$NX_FILE:nginx -s reload";
