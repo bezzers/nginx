@@ -2,13 +2,23 @@ FROM nginx:alpine
 
 MAINTAINER Paul Beswick
 
+ENV CONSUL_TEMPLATE_VERSION 0.14.0
 ENV CT_FILE nginx.conf.ctmpl
 ENV NX_FILE /etc/nginx/nginx.conf
 
 RUN apk add --update curl jq gettext
 
+# Install consul template
+ADD https://github.com/hashicorp/consul-template/releases/download/v${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.tar.gz /
+
+RUN tar zxvf consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.tar.gz && \
+    mv consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64/consul-template /usr/local/bin/consul-template &&\
+    rm -rf /consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.tar.gz && \
+    rm -rf /consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64 && \
+    mkdir -p /consul-template /consul-template/config.d /consul-template/templates
+
 ADD nginx.conf /etc/nginx/nginx-template.conf
-ADD nginx.conf.ctmpl nginx.conf.ctmpl
+ADD nginx.conf.ctmpl /consul-template/templates/nginx.conf.ctmpl
 ADD entrypoint.sh entrypoint.sh
 RUN chmod +x entrypoint.sh
 
