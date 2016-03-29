@@ -8,7 +8,7 @@ http {
 
   upstream app {
     least_conn;
-    {{range service {{env "SERVICE_ADDRESS"}}}}server {{.Address}}:{{.Port}} max_fails=3 fail_timeout=60 weight=1;
+    {{range service \"$SERVICE_ADDRESS\"}}server {{.Address}}:{{.Port}} max_fails=3 fail_timeout=60 weight=1;
     {{else}}server 127.0.0.1:65535; # force a 502{{end}}
   }
 
@@ -21,7 +21,7 @@ http {
   # Listen for and decrypt https
   server {
     listen              443 ssl; # 'ssl' parameter tells NGINX to decrypt the traffic; replace with 443 later
-    server_name         {{env "PUBLIC_ADDRESS"}}
+    server_name         $PUBLIC_ADDRESS;
     ssl_certificate           /etc/nginx/cert.crt;
     ssl_certificate_key       /etc/nginx/cert.key;
     ssl on;
