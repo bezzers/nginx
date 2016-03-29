@@ -3,7 +3,7 @@ FROM nginx:alpine
 MAINTAINER Paul Beswick
 
 ENV CONSUL_TEMPLATE_VERSION 0.14.0
-ENV CT_FILE nginx.conf.ctmpl
+ENV CT_FILE /consul-template/templates/nginx.conf.ctmpl
 ENV NX_FILE /etc/nginx/nginx.conf
 
 RUN apk add --update curl jq gettext
