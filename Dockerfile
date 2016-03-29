@@ -9,7 +9,7 @@ ENV NX_FILE /etc/nginx/nginx.conf
 RUN apk add --update curl jq gettext
 
 # Install consul template
-ADD https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSION/consul-template_${CONSUL_TEMPLATE_VERSION_linux_amd64.zip
+ADD https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip
 RUN tar zxvf consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.tar.gz && \
     mv consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64/consul-template /usr/local/bin/consul-template &&\
     rm -rf /consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.tar.gz && \
