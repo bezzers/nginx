@@ -12,5 +12,5 @@ envsubst '$SERVICE_ADDRESS:$PUBLIC_ADDRESS' < $CT_FILE > $CT_FILE
 # Start nginx and consul template
 nginx \
 & consul-template \
-  -consul=consul:8500 \
+  -consul=$CONSUL_SERVER \
   -template "$CT_FILE:$NX_FILE:nginx -s reload";
